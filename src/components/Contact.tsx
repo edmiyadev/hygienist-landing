@@ -1,13 +1,40 @@
+import { useState } from "react";
+
 export const Contact = () => {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const onInputChange = ({ target }: any) => {
+    const { name, value } = target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    // haga lo que tenga que hacer
+
+    console.log("se envio");
+
+    setForm({
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+    });
+  };
+
   return (
     <section id="contact" className="mb-28">
       <h2 className="font-bold text-4xl text-center mb-8">Contacto</h2>
       <div className="flex flex-row container mx-auto">
-        <img
-          src="./img/contact.webp"
-          alt=""
-          className="hidden lg:flex w-1/2"
-        />
+        <img src="./img/contact.webp" alt="" className="hidden lg:flex w-1/2" />
 
         <form className="mx-auto w-full px-4 lg:max-w-md  lg:w-1/2">
           <div className="relative z-0 w-full mb-5 group">
@@ -18,6 +45,8 @@ export const Contact = () => {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              onChange={onInputChange}
+              value={form.name}
             />
             <label
               htmlFor="floating_email"
@@ -36,6 +65,8 @@ export const Contact = () => {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              onChange={onInputChange}
+              value={form.phone}
             />
             <label
               htmlFor="phone"
@@ -52,6 +83,8 @@ export const Contact = () => {
               id="email"
               className="block py-2.5 mb-4 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
+              onChange={onInputChange}
+              value={form.email}
             />
             <label
               htmlFor="email"
@@ -67,6 +100,9 @@ export const Contact = () => {
               rows={4}
               className="block py-2.5 pt-1 px-0  pl-1 w-full text-sm text-gray-900 bg-transparent border-2 rounded-md border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
+              name="message"
+              onChange={onInputChange}
+              value={form.message}
             ></textarea>
             <label
               htmlFor="message"
@@ -78,7 +114,8 @@ export const Contact = () => {
 
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={onSubmitForm}
+            className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
           </button>
