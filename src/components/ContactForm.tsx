@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sendContactData } from "../helpers/sendContactData";
 
 export const ContactForm = () => {
   const [form, setForm] = useState({
@@ -18,10 +19,14 @@ export const ContactForm = () => {
 
   const onSubmitForm = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // haga lo que tenga que hacer
-
-    console.log("se envio");
-
+    
+    sendContactData(form).then(()=>{
+        console.log('se envio correctamente');
+        
+    }).catch(()=>{
+        console.log('error al enviar');
+        
+    });
     setForm({
       name: "",
       phone: "",
