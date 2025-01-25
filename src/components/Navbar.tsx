@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavItem } from "../interfaces/NavItem";
+import { HamburgerMenu } from "./HamburgerMenu";
 
 export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
   const [navActive, setNavActive] = useState(false);
@@ -10,41 +11,28 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
 
   const styles = {
     navNotActive: {
-      nav: "flex-row container justify-between h-full",
-      h1: "font-bold text-2xl mb-2",
-      button: "lg:hidden",
-      div: "lg:flex flex-col md:flex-row md:justify-between items-center gap-x-8 text-xl font-semibold hidden",
+      nav: "flex left-1/2 transform -translate-x-1/2  lg:left-auto lg:transform-none bg-white justify-center space-center  mx-auto fixed lg:relative z-10 container py-4 w-full px-2 lg:bg-transparent",
+      div: "hidden flex-col w-2/3 items-center gap-x-8 text-xl font-semibold md:flex-row md:justify-between lg:flex ",
     },
     navActive: {
-      nav: "fixed z-10 bg-blue-700 flex-col h-screen w-full py-4 px-2",
-      h1: "hidden",
-      button: "mb-8",
+      nav: "flex fixed z-10 bg-blue-700 flex-col h-screen w-full py-5 px-2",
       div: "flex flex-col items-center gap-y-6 text-xl font-semibold",
     },
   };
 
   return (
     <nav
-      className={`flex mx-auto items-center px-2 ${
+      className={
         navActive ? styles.navActive.nav : styles.navNotActive.nav
-      }`}
+      }
     >
-      <h1
-        className={`font-bold text-2xl mb-2 ${
-          navActive ? styles.navActive.h1 : styles.navNotActive.h1
-        }`}
-      >
-        Katherine Lora
-      </h1>
+      <div className="flex container mx-auto justify-between items-center w-full">
+        <h1 className={"font-bold text-2xl mb-2"}>Katherine Lora</h1>
 
-      <button
-        className={
-          navActive ? styles.navActive.button : styles.navNotActive.button
-        }
-        onClick={onClick}
-      >
-        menubar
-      </button>
+        <button className="lg:hidden" onClick={onClick}>
+          <HamburgerMenu navActive={navActive} />
+        </button>
+      </div>
 
       <div
         className={navActive ? styles.navActive.div : styles.navNotActive.div}
@@ -54,10 +42,8 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
             <a
               key={item.id}
               href={`#${item.name}`}
-              className="hover:text-blue-800"
-              onClick={() => {
-                navActive && setNavActive(!navActive);
-              }}
+              className="hover:text-blue-800 flex-nowrap"
+              onClick={() => navActive && setNavActive(!navActive)}
             >
               {item.label}
             </a>
@@ -67,59 +53,3 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
     </nav>
   );
 };
-
-// export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
-//   const [navActive, setNavActive] = useState(false);
-
-//   const onClick = () => {
-//     setNavActive(!navActive);
-//   };
-
-//   if (navActive) {
-//     return (
-//       <nav className="fixed z-10 bg-blue-700 flex flex-col mx-auto items-center h-screen w-full py-4 px-2">
-//         <button className="mb-8" onClick={onClick}>
-//           menubar
-//         </button>
-
-//         <div className="flex flex-col items-center gap-y-6 text-xl font-semibold">
-//           {navItems.map((item: NavItem) => {
-//             return (
-//               <a
-//                 key={item.id}
-//                 href={`#${item.name}`}
-//                 className="hover:text-blue-800"
-//                 onClick={() => {
-//                   setNavActive(!navActive);
-//                 }}
-//               >
-//                 {item.label}
-//               </a>
-//             );
-//           })}
-//         </div>
-//       </nav>
-//     );
-//   }
-
-//   return (
-//     <nav className="flex flex-row container mx-auto justify-between items-center h-full px-2">
-//       <h1 className="font-bold text-2xl mb-2">Katherine Lora</h1>
-
-//       <button className="lg:hidden" onClick={onClick}>menubar</button>
-//       <div className="lg:flex flex-col md:flex-row md:justify-between items-center gap-x-8 text-xl font-semibold hidden">
-//         {navItems.map((item: NavItem) => {
-//           return (
-//             <a
-//               key={item.id}
-//               href={`#${item.name}`}
-//               className="hover:text-blue-800"
-//             >
-//               {item.label}
-//             </a>
-//           );
-//         })}
-//       </div>
-//     </nav>
-//   );
-// };
