@@ -4,23 +4,19 @@ import { Navbar } from "../components";
 export const Header = () => {
   const navItems: NavItem[] = [
     {
-      id: 1,
-      name: "hero",
+      href: "#hero",
       label: "Inicio",
     },
     {
-      id: 2,
-      name: "services",
+      href: "#services",
       label: "Servicios",
     },
     {
-      id: 3,
-      name: "about",
+      href: "#about",
       label: "Sobre Mi",
     },
     {
-      id: 4,
-      name: "contact",
+      href: "#contact",
       label: "Contacto",
     },
   ];

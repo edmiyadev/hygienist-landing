@@ -37,8 +37,8 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
         {navItems.map((item: NavItem) => {
           return (
             <a
-              key={item.id}
-              href={`#${item.name}`}
+              key={item.label}
+              href={item.href}
               className="hover:text-blue-800 flex-nowrap"
               onClick={() => navActive && setNavActive(!navActive)}
             >
