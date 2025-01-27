@@ -4,10 +4,10 @@ import { HamburgerMenu } from "./HamburgerMenu";
 import { ButtonThemeMode } from "./ButtonThemeMode";
 
 export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
-  const [navActive, setNavActive] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const onClick = () => {
-    setNavActive(!navActive);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const styles = {
@@ -15,24 +15,24 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
       nav: "flex left-1/2 transform -translate-x-1/2  lg:left-auto lg:transform-none bg-white justify-center space-center  mx-auto fixed lg:relative z-10 container py-4 w-full px-2 lg:bg-transparent dark:bg-[#0f172a]",
       div: "hidden flex-col w-2/3 items-center gap-x-8 text-xl font-semibold md:flex-row md:justify-between lg:flex ",
     },
-    navActive: {
+    isMenuOpen: {
       nav: "flex fixed z-10 bg-blue-700 flex-col h-screen w-full py-5 px-2",
       div: "flex flex-col items-center gap-y-6 text-xl font-semibold",
     },
   };
 
   return (
-    <nav className={navActive ? styles.navActive.nav : styles.navNotActive.nav}>
+    <nav className={isMenuOpen ? styles.isMenuOpen.nav : styles.navNotActive.nav}>
       <div className="flex container mx-auto justify-between items-center w-full">
         <h1 className={"font-bold text-2xl mb-2"}>Katherine Lora</h1>
 
         <button className="lg:hidden" onClick={onClick}>
-          <HamburgerMenu navActive={navActive} />
+          <HamburgerMenu isMenuOpen={isMenuOpen} />
         </button>
       </div>
 
       <div
-        className={navActive ? styles.navActive.div : styles.navNotActive.div}
+        className={isMenuOpen ? styles.isMenuOpen.div : styles.navNotActive.div}
       >
         {navItems.map((item: NavItem) => {
           return (
@@ -40,7 +40,7 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
               key={item.label}
               href={item.href}
               className="hover:text-blue-800 flex-nowrap"
-              onClick={() => navActive && setNavActive(!navActive)}
+              onClick={() => isMenuOpen && setIsMenuOpen(!isMenuOpen)}
             >
               {item.label}
             </a>
