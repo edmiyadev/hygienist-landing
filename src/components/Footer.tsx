@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-blue-700 text-white pt-16">
+    <footer className="bg-white dark:bg-gray-900 dark:text-white text-black pt-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -60,7 +60,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="py-8 mt-8 text-center bg-blue-600 w-full">
+      <div className="py-8 mt-8 text-center bg-white dark:bg-gray-900 dark:text-white text-black w-full">
         <p>
           &copy; 2025 Katherine Lora - Higienista Dental. Todos los derechos
           reservados.

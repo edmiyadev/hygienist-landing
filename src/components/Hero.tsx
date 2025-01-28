@@ -1,6 +1,6 @@
 export const Hero = () => {
   return (
-    <section id="hero" className="mb-28 mt-2">
+    <section id="hero" className="mb-28 mt-10">
       <div className="container mx-auto bg-[url('/img/background.jpg')] bg-no-repeat bg-cover h-screen md:h-[700px] bg-center">
         <div className="backdrop-blur-md h-screen md:h-[700px] flex justify-center items-center">
           <div className="container px-3 mx-auto justify-center items-center flex flex-col h-[400px]  md:items-start">
@@ -13,7 +13,6 @@ export const Hero = () => {
               radiante.
             </p>
             <div>
-              {/* <div className=" h-6"></div> */}
               <button className="bg-blue-700 text-white text-lg font-bold py-4 px-2 rounded-md hover:bg-blue-800">
                 Reserva tu cita ahora
               </button>

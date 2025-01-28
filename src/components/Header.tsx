@@ -22,7 +22,7 @@ export const Header = () => {
   ];
 
   return (
-    <header className="h-32 lg:h-20 dark:text-white">
+    <header className="flex justify-center h-32 lg:h-24 bg-white dark:bg-gray-900 text-black dark:text-white">
       <Navbar navItems={navItems} />
     </header>
   );
