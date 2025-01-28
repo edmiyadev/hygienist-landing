@@ -22,7 +22,7 @@ export const Header = () => {
   ];
 
   return (
-    <header className="h-36 lg:h-20 dark:text-white">
+    <header className="h-32 lg:h-20 dark:text-white">
       <Navbar navItems={navItems} />
     </header>
   );

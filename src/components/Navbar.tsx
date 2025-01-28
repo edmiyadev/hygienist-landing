@@ -6,33 +6,33 @@ import { ButtonThemeMode } from "./ButtonThemeMode";
 export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const onClick = () => {
+  const onClickMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const styles = {
-    navNotActive: {
-      nav: "flex left-1/2 transform -translate-x-1/2  lg:left-auto lg:transform-none bg-white justify-center space-center  mx-auto fixed lg:relative z-10 container py-4 w-full px-2 lg:bg-transparent dark:bg-[#0f172a]",
-      div: "hidden flex-col w-2/3 items-center gap-x-8 text-xl font-semibold md:flex-row md:justify-between lg:flex ",
+    menuClose: {
+      nav: "left-1/2 transform -translate-x-1/2 lg:left-auto lg:transform-none bg-white justify-center space-center mx-auto lg:relative container",
+      div: "hidden w-3/4 gap-x-8 md:flex-row md:justify-between lg:flex ",
     },
-    isMenuOpen: {
-      nav: "flex fixed z-10 bg-blue-700 flex-col h-screen w-full py-5 px-2",
-      div: "flex flex-col items-center gap-y-6 text-xl font-semibold",
+    menuOpen: {
+      nav: "flex-col h-screen",
+      div: "flex gap-y-6",
     },
   };
 
   return (
-    <nav className={isMenuOpen ? styles.isMenuOpen.nav : styles.navNotActive.nav}>
-      <div className="flex container mx-auto justify-between items-center w-full">
+    <nav className={`fixed flex w-full z-10 p-4 bg-slate-100 dark:bg-gray-800 ${isMenuOpen ? styles.menuOpen.nav : styles.menuClose.nav}`}>
+      <div className="flex container mx-auto justify-between items-center w-full lg:w-1/4">
         <h1 className={"font-bold text-2xl mb-2"}>Katherine Lora</h1>
 
-        <button className="lg:hidden" onClick={onClick}>
+        <button className="lg:hidden" onClick={onClickMenu}>
           <HamburgerMenu isMenuOpen={isMenuOpen} />
         </button>
       </div>
 
       <div
-        className={isMenuOpen ? styles.isMenuOpen.div : styles.navNotActive.div}
+        className={`flex-col items-center text-xl font-semibold ${isMenuOpen ? styles.menuOpen.div : styles.menuClose.div}`}
       >
         {navItems.map((item: NavItem) => {
           return (
