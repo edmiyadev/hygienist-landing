@@ -1,38 +1,28 @@
-import { useState } from "react";
 import { sendContactData } from "../helpers/sendContactData";
+import { useForm } from "../hooks/useForm";
 
 export const ContactForm = () => {
-  const [form, setForm] = useState({
+  const { formState, onInputChange, resetForm } = useForm({
     name: "",
     phone: "",
     email: "",
     message: "",
   });
 
-  const onInputChange = ({ target }: any) => {
-    const { name, value } = target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
+  const { name, phone, email, message } = formState;
 
   const onSubmitForm = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    
-    sendContactData(form).then(()=>{
-        console.log('se envio correctamente');
-        
-    }).catch(()=>{
-        console.log('error al enviar');
-        
-    });
-    setForm({
-      name: "",
-      phone: "",
-      email: "",
-      message: "",
-    });
+
+    sendContactData(formState)
+      .then(() => {
+        console.log("se envio correctamente");
+      })
+      .catch(() => {
+        console.log("error al enviar");
+      });
+
+    resetForm();
   };
 
   return (
@@ -46,7 +36,7 @@ export const ContactForm = () => {
           placeholder=" "
           required
           onChange={onInputChange}
-          value={form.name}
+          value={name}
         />
         <label
           htmlFor="floating_email"
@@ -66,7 +56,7 @@ export const ContactForm = () => {
           placeholder=" "
           required
           onChange={onInputChange}
-          value={form.phone}
+          value={phone}
         />
         <label
           htmlFor="phone"
@@ -84,7 +74,7 @@ export const ContactForm = () => {
           className="block py-2.5 mb-4 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer dark:text-white"
           placeholder=" "
           onChange={onInputChange}
-          value={form.email}
+          value={email}
         />
         <label
           htmlFor="email"
@@ -102,7 +92,7 @@ export const ContactForm = () => {
           placeholder=" "
           name="message"
           onChange={onInputChange}
-          value={form.message}
+          value={message}
         ></textarea>
         <label
           htmlFor="message"
