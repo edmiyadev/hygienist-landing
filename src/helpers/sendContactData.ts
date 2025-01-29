@@ -1,6 +1,8 @@
-const API_URL = "http://localhost:3002/send-email";
+import { ContactInfo } from "../interfaces/ContactInfo";
 
-export const sendContactData = async (form: {name: string, phone: string, email: string, message: string}) => {
+const API_URL = `${import.meta.env.VITE_API_URL}/send-email`;
+
+export const sendContactData = async (form: ContactInfo) => {
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {
@@ -10,5 +12,5 @@ export const sendContactData = async (form: {name: string, phone: string, email:
     },
     body: JSON.stringify(form),
   });
-    console.log(res);
+  console.log(res);
 };
