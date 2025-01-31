@@ -1,14 +1,6 @@
-export const About = () => {
-  const about = {
-    image: "./img/avatar.webp",
-    name: "Katherine Lora",
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea tempore
-            suscipit, iusto at voluptatum facilis ducimus animi natus autem
-            praesentium omnis officiis, eaque eius, odit necessitatibus atque.
-            Neque, voluptates animi!Lorem ipsum dolor sit amet consectetur
-            adipisicing elit.`,
-  };
+import { about } from "../data/data";
 
+export const About = () => {
   return (
     <section id="about" className="mb-28">
       <div className="container rounded-lg mx-auto flex flex-col lg:flex-row justify-center items-center py-20 bg-white mb-28">

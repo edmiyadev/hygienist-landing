@@ -1,7 +1,7 @@
-import { ButtonThemeMode } from "./ButtonThemeMode";
-import { HamburgerMenu } from "./HamburgerMenu";
-import { NavItem } from "../interfaces/NavItem";
-import { useToggleMenu } from "../hooks/useToggleMenu";
+import { ButtonThemeMode } from "./";
+import { HamburgerMenu } from "./";
+import { NavItem } from "../interfaces";
+import { useToggleMenu } from "../hooks";
 
 export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
   const { isMenuOpen, onClickMenu } = useToggleMenu();

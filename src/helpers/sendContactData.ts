@@ -1,4 +1,4 @@
-import { ContactInfo } from "../interfaces/ContactInfo";
+import { ContactInfo } from "../interfaces";
 
 const API_URL = `${import.meta.env.VITE_API_URL}/send-email`;
 

@@ -1,8 +1,9 @@
 import { sendContactData } from "../helpers/sendContactData";
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../hooks";
+import { ContactInfo } from "../interfaces";
 
 export const ContactForm = () => {
-  const { formState, onInputChange, resetForm } = useForm({
+  const { formState, onInputChange, resetForm } = useForm<ContactInfo>({
     name: "",
     phone: "",
     email: "",

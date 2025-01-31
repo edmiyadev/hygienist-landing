@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-export const useForm = (initialForm = {}) => {
-  const [formState, setFormState] = useState(initialForm);
+export const useForm = <T extends Record<string, any>>(initialForm: T) => {
+  const [formState, setFormState] = useState<T>(initialForm);
 
-  const onInputChange = ({ target }) => {
-    const { name, value } = target;
+  const onInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
+    setFormState((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const resetForm = () => {
@@ -19,6 +21,6 @@ export const useForm = (initialForm = {}) => {
   return {
     formState,
     onInputChange,
-    resetForm
+    resetForm,
   };
 };
