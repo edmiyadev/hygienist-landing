@@ -23,7 +23,7 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
         isMenuOpen ? styles.menuOpen.nav : styles.menuClose.nav
       }`}
     >
-      <div className="flex container mx-auto justify-between items-center w-full lg:w-1/4">
+      <div className="flex container mx-auto justify-between items-center lg:w-2/5 w-full lg:justify-start">
         <h1 className={"font-bold text-2xl mb-2"}>Katherine Lora</h1>
 
         <button className="lg:hidden" onClick={onClickMenu}>
@@ -32,7 +32,7 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
       </div>
 
       <div
-        className={`flex-col items-center text-xl font-semibold ${
+        className={`flex-col items-center text-xl font-semibold flex-1 ${
           isMenuOpen ? styles.menuOpen.div : styles.menuClose.div
         }`}
       >
