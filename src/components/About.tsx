@@ -11,7 +11,7 @@ export const About = () => {
 
   return (
     <section id="about" className="mb-28">
-      <div className="container mx-auto flex flex-col lg:flex-row justify-center items-center py-20 bg-white mb-28">
+      <div className="container rounded-lg mx-auto flex flex-col lg:flex-row justify-center items-center py-20 bg-white mb-28">
         <div className="flex w-1/2 justify-center">
           <img
             src={about.image}

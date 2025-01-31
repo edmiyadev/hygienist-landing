@@ -19,7 +19,7 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
 
   return (
     <nav
-      className={`fixed flex w-full z-10 p-4 bg-white dark:bg-gray-900 ${
+      className={`fixed flex w-full z-10 p-4 bg-slate-100 dark:bg-gray-900 ${
         isMenuOpen ? styles.menuOpen.nav : styles.menuClose.nav
       }`}
     >
@@ -41,7 +41,7 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
             <a
               key={item.label}
               href={item.href}
-              className="hover:text-blue-800 flex-nowrap"
+              className="hover:text-[#359EFF] flex-nowrap"
               onClick={() => isMenuOpen && onClickMenu()}
             >
               {item.label}
