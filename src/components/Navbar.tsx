@@ -2,6 +2,7 @@ import { ButtonThemeMode } from "./";
 import { HamburgerMenu } from "./";
 import { NavItem } from "../interfaces";
 import { useToggleMenu } from "../hooks";
+import "@fontsource/alex-brush";
 
 export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
   const { isMenuOpen, onClickMenu } = useToggleMenu();
@@ -24,7 +25,23 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
       }`}
     >
       <div className="flex container mx-auto justify-between items-center lg:w-2/5 w-full lg:justify-start">
-        <h1 className={"font-bold text-2xl mb-2"}>Katherine Lora</h1>
+        <div
+          className={
+            " flex lg:flex-col items-center justify-center font-bold mb-2"
+          }
+        >
+          <img
+            alt="Katherine Lora"
+            src="./icons/favicon.svg"
+            width={"60px"}
+          ></img>
+          <h1
+            className="text-xl"
+            style={{ fontFamily: "'Alex Brush', cursive" }}
+          >
+            Katherine Lora
+          </h1>
+        </div>
 
         <button className="lg:hidden" onClick={onClickMenu}>
           <HamburgerMenu isMenuOpen={isMenuOpen} />
