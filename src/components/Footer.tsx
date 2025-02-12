@@ -2,6 +2,10 @@ import { FacebookIcon } from "./icons";
 import { InstagramIcon } from "./icons";
 import { TwitterIcon } from "./icons";
 
+const getYear = ()=>{  
+  return new Date().getFullYear();
+}
+
 export const Footer = () => {
   return (
     <footer className="bg-white dark:bg-black dark:text-white text-black pt-16">
@@ -37,7 +41,7 @@ export const Footer = () => {
       </div>
       <div className="py-8 mt-8 text-center bg-white dark:bg-black dark:text-white text-black w-full">
         <p>
-          &copy; 2025 Katherine Lora - Higienista Dental. Todos los derechos
+          &copy; {getYear()} Katherine Lora - Higienista Dental. Todos los derechos
           reservados.
         </p>
       </div>
