@@ -9,8 +9,8 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
 
   const styles = {
     menuClose: {
-      nav: "left-1/2 transform -translate-x-1/2 lg:left-auto lg:transform-none justify-center space-center mx-auto lg:relative container",
-      div: "hidden w-3/4 gap-x-8 md:flex-row md:justify-between lg:flex",
+      nav: "left-1/2 transform -translate-x-1/2 lg:left-auto lg:transform-none justify-center space-center mx-auto lg:relative",
+      div: "hidden w-3/4 gap-x-6 md:flex-row md:justify-between lg:flex",
     },
     menuOpen: {
       nav: "flex-col h-screen",
