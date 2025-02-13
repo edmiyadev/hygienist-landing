@@ -1,29 +1,59 @@
+import { useState } from "react";
 import { sendContactData } from "../helpers/sendContactData";
 import { useForm } from "../hooks";
-import { ContactInfo } from "../interfaces";
+import { ContactFormValidations, ContactForm as Contact } from "../interfaces";
+
+const initialForm = {
+  name: "",
+  phone: "",
+  email: "",
+  message: "",
+};
+
+const formValidations: ContactFormValidations = {
+  name: [
+    (value: string) => value.length >= 3,
+    "El nombre debe tener al menos 3 caracteres",
+  ],
+  phone: [
+    (value: string) => value.length === 0 || !isNaN(Number(value)),
+    "Introduzca un numero valido",
+  ],
+  email: [
+    (value: string) => value.includes("@"),
+    "Introduzca un correo valido",
+  ],
+  message: [
+    (value: string) => value.length > 1,
+    "El mensaje debe tener almenos 3 caracteres",
+  ],
+};
 
 export const ContactForm = () => {
-  const { formState, onInputChange, resetForm } = useForm<ContactInfo>({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const { formState, formValidation, isFormValid, onInputChange, resetForm } =
+    useForm<Contact>(initialForm, formValidations);
+
+  const [formSubmit, setFormSubmit] = useState(false);
 
   const { name, phone, email, message } = formState;
+  const { nameValid, phoneValid, emailValid, messageValid } = formValidation;
 
   const onSubmitForm = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    sendContactData(formState)
-      .then(() => {
-        console.log("se envio correctamente");
-      })
-      .catch(() => {
-        console.log("error al enviar");
-      });
+    setFormSubmit(true);
 
-    resetForm();
+    if (isFormValid) {
+      sendContactData(formState)
+        .then(() => {
+          console.log("se envio correctamente");
+        })
+        .catch(() => {
+          console.log("error al enviar");
+        });
+
+      resetForm();
+    }
   };
 
   return (
@@ -36,44 +66,55 @@ export const ContactForm = () => {
           type="text"
           name="name"
           id="name"
-          className="w-full bg-gray-100 text-md py-2 px-3"
+          className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
+            formSubmit && nameValid && "border-red-500"
+          }`}
           placeholder="Nombre*"
           required
           onChange={onInputChange}
           value={name}
         />
+        <p className="text-red-500 mt-[-15px]">{formSubmit && nameValid}</p>
 
         <input
           type="tel"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           name="phone"
           id="phone"
-          className="w-full bg-gray-100 text-md py-2 px-3"
+          className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
+            formSubmit && phoneValid && "border-red-500"
+          }`}
           placeholder="Telefono"
           required
           onChange={onInputChange}
           value={phone}
         />
+        <p className="text-red-500 mt-[-15px]">{formSubmit && phoneValid}</p>
 
         <input
           type="email"
           name="email"
           id="email"
-          className="w-full bg-gray-100 text-md py-2 px-3"
+          className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
+            formSubmit && emailValid && "border-red-500"
+          }`}
           placeholder="Correo electronico"
           onChange={onInputChange}
           value={email}
         />
+        <p className="text-red-500 mt-[-15px]">{formSubmit && emailValid}</p>
 
         <textarea
           id="message"
           name="message"
-          className="w-full bg-gray-100 text-md py-2 px-3"
+          className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
+            formSubmit && messageValid && "border-red-500"
+          }`}
           placeholder="Mensaje ..."
           rows={4}
           onChange={onInputChange}
           value={message}
         ></textarea>
+        <p className="text-red-500 mt-[-15px]">{formSubmit && messageValid}</p>
 
         <div className="flex justify-center">
           <button
