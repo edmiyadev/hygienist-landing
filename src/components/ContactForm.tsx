@@ -69,7 +69,7 @@ export const ContactForm = () => {
           className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
             formSubmit && nameValid && "border-red-500"
           }`}
-          placeholder="Nombre*"
+          placeholder="Nombre"
           required
           onChange={onInputChange}
           value={name}
@@ -122,7 +122,7 @@ export const ContactForm = () => {
             onClick={onSubmitForm}
             className="text-white bg-[#359EFF] hover:bg-[#3c8edc] font-medium rounded-lg text-md lg:text-lg px-5 py-2.5 text-center w-48"
           >
-            Submit
+            Enviar
           </button>
         </div>
       </form>

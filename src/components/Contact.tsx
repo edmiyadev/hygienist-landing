@@ -10,8 +10,9 @@ export const Contact = () => {
               Necesitas asistencia?
             </h3>
             <p className="text-xl text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-              doloribus similique nesciunt voluptatum itaque dolores.
+              Contáctame para agendar una cita, resolver dudas sobre tratamientos
+              o recibir consejos personalizados para el cuidado de tu salud bucal.
+              Estoy aquí para ayudarte.
             </p>
           </div>
         </div>

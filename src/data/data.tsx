@@ -41,9 +41,12 @@ export const services: Service[] = [
 export const about = {
   image: "./img/avatar.webp",
   name: "Katherine Lora",
-  description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea tempore
-            suscipit, iusto at voluptatum facilis ducimus animi natus autem
-            praesentium omnis officiis, eaque eius, odit necessitatibus atque.
-            Neque, voluptates animi!Lorem ipsum dolor sit amet consectetur
-            adipisicing elit.`,
+  description: `Soy una higienista dental certificada con más de 2 años de experiencia 
+            en salud bucodental preventiva. Mi formación especializada y continua 
+            actualización me permiten ofrecer los mejores tratamientos de limpieza, 
+            prevención y estética dental. Me apasiona educar a mis pacientes sobre 
+            técnicas de higiene oral adecuadas y ayudarles a mantener una sonrisa 
+            saludable y radiante. Mi enfoque se basa en un cuidado personalizado, 
+            atento y profesional para que cada visita sea una experiencia cómoda 
+            y satisfactoria.`,
 };

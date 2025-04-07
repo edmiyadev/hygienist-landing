@@ -13,7 +13,7 @@ export const Navbar = ({ navItems }: { navItems: NavItem[] }) => {
       div: "hidden w-3/4 gap-x-6 md:flex-row md:justify-between lg:flex",
     },
     menuOpen: {
-      nav: "flex-col h-screen",
+      nav: "flex-col h-screen duration-500",
       div: "flex gap-y-6",
     },
   };
