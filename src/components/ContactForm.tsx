@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { sendContactData } from "../helpers/sendContactData";
 import { useForm } from "../hooks";
+import { ToastContainer, toast } from "react-toastify";
+import { sendContactData } from "../helpers/sendContactData";
 import { ContactFormValidations, ContactForm as Contact } from "../interfaces";
 
 const initialForm = {
@@ -38,21 +39,25 @@ export const ContactForm = () => {
   const { name, phone, email, message } = formState;
   const { nameValid, phoneValid, emailValid, messageValid } = formValidation;
 
+  const notifySuccess = () => toast.success("Informacion enviada correctamente");
+  const notifyError = () => toast.error("Error al enviar la informacion");
+
   const onSubmitForm = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     setFormSubmit(true);
 
     if (isFormValid) {
       sendContactData(formState)
         .then(() => {
           console.log("se envio correctamente");
+          notifySuccess();
+          resetForm();
+          setFormSubmit(false);
         })
         .catch(() => {
+          notifyError();
           console.log("error al enviar");
         });
-
-      resetForm();
     }
   };
 
@@ -67,7 +72,7 @@ export const ContactForm = () => {
           name="name"
           id="name"
           className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
-            formSubmit && nameValid && "border-red-500"
+            formSubmit && nameValid ? "border-red-500" : ""
           }`}
           placeholder="Nombre"
           required
@@ -81,7 +86,7 @@ export const ContactForm = () => {
           name="phone"
           id="phone"
           className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
-            formSubmit && phoneValid && "border-red-500"
+            formSubmit && phoneValid ? "border-red-500" : ""
           }`}
           placeholder="Telefono"
           required
@@ -95,7 +100,7 @@ export const ContactForm = () => {
           name="email"
           id="email"
           className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
-            formSubmit && emailValid && "border-red-500"
+            formSubmit && emailValid ? "border-red-500" : ""
           }`}
           placeholder="Correo electronico"
           onChange={onInputChange}
@@ -107,7 +112,7 @@ export const ContactForm = () => {
           id="message"
           name="message"
           className={`w-full bg-gray-100 text-md py-2 px-3 border-[1px] rounded-sm ${
-            formSubmit && messageValid && "border-red-500"
+            formSubmit && messageValid ? "border-red-500" : ""
           }`}
           placeholder="Mensaje ..."
           rows={4}
@@ -124,6 +129,7 @@ export const ContactForm = () => {
           >
             Enviar
           </button>
+          <ToastContainer />
         </div>
       </form>
     </div>
