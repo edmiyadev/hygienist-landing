@@ -47,7 +47,7 @@ export const useForm = <T extends Record<string, any>>(
 
     for (const formField of Object.keys(formValidations)) {
       const [fn, errorMessage] = formValidations[formField as keyof T]!;
-      formCheckedValues[`${formField}Valid`] = fn(formState[formField as keyof T])
+      (formCheckedValues as Record<string, string | null>)[`${formField}Valid`] = fn(formState[formField as keyof T])
         ? null
         : errorMessage;
     }

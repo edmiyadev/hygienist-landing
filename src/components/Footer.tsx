@@ -1,6 +1,6 @@
-import { FacebookIcon } from "./icons";
-import { InstagramIcon } from "./icons";
-import { TwitterIcon } from "./icons";
+// import { FacebookIcon } from "./icons";
+// import { InstagramIcon } from "./icons";
+// import { TwitterIcon } from "./icons";
 
 const getYear = ()=>{  
   return new Date().getFullYear();
