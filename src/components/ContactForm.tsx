@@ -49,14 +49,12 @@ export const ContactForm = () => {
     if (isFormValid) {
       sendContactData(formState)
         .then(() => {
-          console.log("se envio correctamente");
           notifySuccess();
           resetForm();
           setFormSubmit(false);
         })
         .catch(() => {
           notifyError();
-          console.log("error al enviar");
         });
     }
   };

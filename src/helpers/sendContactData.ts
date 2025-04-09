@@ -12,5 +12,6 @@ export const sendContactData = async (form: ContactForm) => {
     },
     body: JSON.stringify(form),
   });
-  console.log(res);
+
+  return res.json();
 };
